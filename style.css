@@ -193,8 +193,9 @@ h1 {
   gap: 1.2rem;
 }
 
-/* Dodaj specifyczne style dla sekcji learn */
-.learn.card-section {
+/* Glass effect styles dla obu sekcji */
+.learn.card-section,
+.youtube.card-section {
   --bg-color: rgba(35, 32, 28, 0.3);
   --highlight: rgba(255, 255, 255, 0.15);
   
@@ -205,9 +206,16 @@ h1 {
   cursor: pointer;
   margin-left: 1.5rem;
   margin-right: 1.5rem;
+  
+  /* Świecąca ramka */
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.1),
+              0 0 15px rgba(255, 255, 255, 0.2),
+              0 0 30px rgba(255, 255, 255, 0.1),
+              inset 0 0 0 1px rgba(255, 255, 255, 0.05);
 }
 
-.learn.card-section::before {
+.learn.card-section::before,
+.youtube.card-section::before {
   content: '';
   position: absolute;
   inset: 0;
@@ -218,7 +226,8 @@ h1 {
   pointer-events: none;
 }
 
-.learn.card-section::after {
+.learn.card-section::after,
+.youtube.card-section::after {
   content: '';
   position: absolute;
   inset: 0;
@@ -229,7 +238,8 @@ h1 {
   pointer-events: none;
 }
 
-.learn.card-section .glass-distortion-overlay {
+.learn.card-section .glass-distortion-overlay,
+.youtube.card-section .glass-distortion-overlay {
   position: absolute;
   inset: 0;
   background: radial-gradient(circle at 20% 30%, rgba(255,255,255,0.03) 0%, transparent 80%),
@@ -242,31 +252,44 @@ h1 {
   border-radius: inherit;
 }
 
+
+
 .learn.card-section .logo-placeholder,
 .learn.card-section .cta-logo-placeholder,
-.learn.card-section .learn-content {
+.learn.card-section .learn-content,
+.youtube.card-section .video-logo-placeholder,
+.youtube.card-section .video-thumbnail-container,
+.youtube.card-section .youtube-content {
   position: relative;
   z-index: 10;
 }
 
-.learn.card-section:hover {
+.learn.card-section:hover,
+.youtube.card-section:hover {
   transform: translateY(-8px) scale(1.02);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-  border: 2px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.3),
+              0 0 25px rgba(255, 255, 255, 0.4),
+              0 0 50px rgba(255, 255, 255, 0.2),
+              0 8px 32px rgba(0, 0, 0, 0.3),
+              inset 0 0 0 1px rgba(255, 255, 255, 0.1);
 }
 
-.learn.card-section:hover::after {
+.learn.card-section:hover::after,
+.youtube.card-section:hover::after {
   background: rgba(35, 32, 28, 0.4);
   box-shadow: inset 1px 1px 1px rgba(255, 255, 255, 0.25);
 }
 
 .learn.card-section:hover .logo-placeholder,
-.learn.card-section:hover .cta-logo-placeholder {
+.learn.card-section:hover .cta-logo-placeholder,
+.youtube.card-section:hover .video-logo-placeholder,
+.youtube.card-section:hover .video-thumbnail-container {
   transform: rotate(10deg) scale(1.1);
   box-shadow: 0 4px 20px rgba(254, 81, 18, 0.4);
 }
 
-.learn.card-section:hover .accent-gradient {
+.learn.card-section:hover .accent-gradient,
+.youtube.card-section:hover .accent-gradient {
   background: linear-gradient(90deg, #ff6b2b 0%, #ffc947 100%);
   background-clip: text;
   -webkit-background-clip: text;
@@ -275,7 +298,9 @@ h1 {
 }
 
 .learn.card-section .logo-placeholder,
-.learn.card-section .cta-logo-placeholder {
+.learn.card-section .cta-logo-placeholder,
+.youtube.card-section .video-logo-placeholder,
+.youtube.card-section .video-thumbnail-container {
   transition: all 0.3s ease;
 }
 
@@ -426,96 +451,11 @@ footer {
   transform: scale(1.02);
 }
 
-.youtube.card-section {
-  --bg-color: rgba(35, 32, 28, 0.3);
-  --highlight: rgba(255, 255, 255, 0.15);
-  
-  position: relative;
-  background: none;
-  overflow: hidden;
-  transition: all 0.3s ease;
-  cursor: pointer;
-  margin-left: 1.5rem;
-  margin-right: 1.5rem;
+@keyframes floatDistort {
+  0% { background-position: 0% 0%; }
+  50% { background-position: 100% 100%; }
+  100% { background-position: 0% 0%; }
 }
-
-.youtube.card-section::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  z-index: 1;
-  backdrop-filter: blur(1px);
-  filter: url(#glass-distortion) saturate(120%) brightness(1.15);
-  pointer-events: none;
-}
-
-.youtube.card-section::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  z-index: 2;
-  background: var(--bg-color);
-  box-shadow: inset 1px 1px 1px var(--highlight);
-  pointer-events: none;
-}
-
-.youtube.card-section .glass-distortion-overlay {
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at 20% 30%, rgba(255,255,255,0.03) 0%, transparent 80%),
-              radial-gradient(circle at 80% 70%, rgba(255,255,255,0.03) 0%, transparent 80%);
-  background-size: 300% 300%;
-  animation: floatDistort 10s infinite ease-in-out;
-  mix-blend-mode: overlay;
-  z-index: 3;
-  pointer-events: none;
-  border-radius: inherit;
-}
-
-.youtube.card-section .video-logo-placeholder,
-.youtube.card-section .video-thumbnail-container,
-.youtube.card-section .youtube-content {
-  position: relative;
-  z-index: 10;
-} 
-
-.youtube.card-section:hover {
-  transform: translateY(-8px) scale(1.02);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-  border: 2px solid rgba(255, 255, 255, 0.2);
-}
-
-.youtube.card-section:hover::after {
-  background: rgba(35, 32, 28, 0.4);
-  box-shadow: inset 1px 1px 1px rgba(255, 255, 255, 0.25);
-}
-
-.youtube.card-section:hover .video-logo-placeholder {
-  transform: rotate(10deg) scale(1.1);
-  box-shadow: 0 4px 20px rgba(254, 81, 18, 0.4);
-}
-
-.youtube.card-section:hover .video-thumbnail-container {
-  transform: rotate(10deg) scale(1.1);
-  box-shadow: 0 4px 20px rgba(254, 81, 18, 0.4);
-}
-
-.youtube.card-section:hover .accent-gradient {
-  background: linear-gradient(90deg, #ff6b2b 0%, #ffc947 100%);
-  background-clip: text;
-  -webkit-background-clip: text;
-  color: transparent;
-  -webkit-text-fill-color: transparent;
-}
-
-.youtube.card-section .video-logo-placeholder,
-.youtube.card-section .video-thumbnail-container {
-  transition: all 0.3s ease;
-}
-
-
 
 @media (max-width: 550px) {
   .main-logo {
@@ -535,7 +475,8 @@ footer {
     padding: 1rem 0.8rem;
   }
 
-  .learn.card-section {
+  .learn.card-section,
+  .youtube.card-section {
     margin-left: 1.5rem;
     margin-right: 1.5rem;
   }
