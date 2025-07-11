@@ -4,8 +4,21 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>MATT MEDIA</title>
-  <link rel="stylesheet" href="https://use.typekit.net/tak4ljc.css">
-  <link rel="stylesheet" href="style.css?v=1.1">
+  
+  <!-- Preload krytycznych zasobów -->
+  <link rel="preload" href="images/test 1_2.jpg" as="image" fetchpriority="high">
+  <link rel="preload" href="images/test render logo.svg" as="image" fetchpriority="high">
+  <link rel="preload" href="style.css?v=1.2" as="style">
+  
+  <!-- Fonts z preconnect -->
+  <link rel="preconnect" href="https://use.typekit.net">
+  <link rel="preconnect" href="https://p.typekit.net">
+  <link rel="stylesheet" href="https://use.typekit.net/tak4ljc.css" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://use.typekit.net/tak4ljc.css"></noscript>
+  
+  <link rel="stylesheet" href="style.css?v=1.2">
+  
+  <!-- Preload fallback dla starszych przeglądarek -->
   <script>
     // Sprawdź czy CSS się załadował
     window.addEventListener('load', function() {
@@ -25,10 +38,22 @@
     <header class="header">
       <div class="avatar-container animate-avatar">
         <div class="loader">
-          <img src="images/test 1_2.jpg" alt="Avatar" class="avatar-img">
+          <!-- Responsywny obraz z nowoczesnymi formatami -->
+          <picture>
+            <source srcset="images/avatar-optimized@2x.webp 2x, images/avatar-optimized.webp 1x" type="image/webp">
+            <source srcset="images/avatar-optimized@2x.jpg 2x, images/avatar-optimized.jpg 1x" type="image/jpeg">
+            <img src="images/test 1_2.jpg" alt="Avatar" class="avatar-img" 
+                 width="220" height="392" 
+                 fetchpriority="high"
+                 loading="eager">
+          </picture>
         </div>
       </div>      
-      <img src="images/test render logo.svg" alt="MATT MEDIA" class="main-logo animate-logo">
+      
+      <!-- Logo SVG - już zoptymalizowane -->
+      <img src="images/test render logo.svg" alt="MATT MEDIA" class="main-logo animate-logo" 
+           width="200" height="60" fetchpriority="high">
+      
       <div class="socials animate-socials">
         <a href="https://www.youtube.com/@matt_michalek" class="icon-social" target="_blank" aria-label="YouTube">
           <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -71,7 +96,16 @@
           <h2 class="animate-text"><span class="accent-gradient">NAJNOWSZY</span> FILM YOUTUBE</h2>
           <div class="video-embed animate-video">
             <a href="https://www.youtube.com/watch?v=sr0QZRuoi6w" target="_blank" aria-label="Obejrzyj film na YouTube">
-              <img src="images/od 0 do reelsa 12h mini.jpg" alt="Najnowszy film YouTube" style="width: 100%; max-height: 290px; object-fit: cover; border-radius: 30px;">
+              <!-- Responsywny obraz z nowoczesnymi formatami -->
+              <picture>
+                <source srcset="images/thumbnail-optimized@2x.webp 2x, images/thumbnail-optimized.webp 1x" type="image/webp">
+                <source srcset="images/thumbnail-optimized@2x.jpg 2x, images/thumbnail-optimized.jpg 1x" type="image/jpeg">
+                <img src="images/od 0 do reelsa 12h mini.jpg" 
+                     alt="Najnowszy film YouTube" 
+                     width="338" height="190"
+                     style="width: 100%; max-height: 290px; object-fit: cover; border-radius: 30px;"
+                     loading="lazy">
+              </picture>
             </a>
           </div>
         </div>
@@ -82,6 +116,8 @@
       <p>PRAWA AUTORSKIE ©2025 MATT MEDIA</p>
     </footer>
   </div>
+  
+  <!-- Skrypt JavaScript przeniesiony na koniec -->
   <script>
     // Konfiguracja YouTube API
     const YOUTUBE_API_KEY = 'TWÓJ_KLUCZ_API'; // Musisz go pobrać z Google Cloud Console
@@ -113,7 +149,7 @@
     // Załaduj najnowszy film przy starcie strony
     loadLatestVideo();
 
-          // Animacje wejściowe
+    // Animacje wejściowe
     function startAnimations() {
       console.log('Rozpoczynam animacje...');
       
