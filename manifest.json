@@ -1,0 +1,25 @@
+{
+  "name": "MATT MEDIA - Profesjonalne Doradztwo Biznesowe",
+  "short_name": "Matt Media",
+  "description": "Profesjonalne doradztwo w rozwoju firmy. Bezpłatna konsultacja i ekspertyza w marketingu cyfrowym.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#201f1f",
+  "theme_color": "#fe5112",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "images/avatar-optimized.jpg",
+      "sizes": "110x196",
+      "type": "image/jpeg"
+    },
+    {
+      "src": "images/test render logo.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ],
+  "categories": ["business", "productivity", "education"],
+  "lang": "pl",
+  "dir": "ltr"
+} 

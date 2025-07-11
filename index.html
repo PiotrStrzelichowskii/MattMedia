@@ -3,10 +3,42 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MATT MEDIA</title>
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Matt Media - Profesjonalne doradztwo w rozwoju firmy. Bezpłatna konsultacja, najnowsze filmy YouTube i ekspertyza w marketingu cyfrowym. Umów się na rozmowę już dziś!">
+  <meta name="keywords" content="Matt Media, doradztwo biznesowe, konsultacja, marketing cyfrowy, rozwój firmy, YouTube, social media">
+  <meta name="author" content="Matt Michałek">
+  <meta name="robots" content="index, follow">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://piotrstrzelichowskii.github.io/MattMedia/">
+  <meta property="og:title" content="MATT MEDIA - Profesjonalne Doradztwo Biznesowe">
+  <meta property="og:description" content="Bezpłatna konsultacja o rozwoju Twojej firmy. Sprawdź najnowsze filmy YouTube i umów się na rozmowę!">
+  <meta property="og:image" content="https://piotrstrzelichowskii.github.io/MattMedia/images/avatar-optimized.jpg">
+  
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://piotrstrzelichowskii.github.io/MattMedia/">
+  <meta property="twitter:title" content="MATT MEDIA - Profesjonalne Doradztwo Biznesowe">
+  <meta property="twitter:description" content="Bezpłatna konsultacja o rozwoju Twojej firmy. Sprawdź najnowsze filmy YouTube i umów się na rozmowę!">
+  <meta property="twitter:image" content="https://piotrstrzelichowskii.github.io/MattMedia/images/avatar-optimized.jpg">
+  
+  <title>MATT MEDIA - Profesjonalne Doradztwo Biznesowe</title>
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="images/test render logo.svg">
+  <link rel="icon" type="image/png" href="images/avatar-optimized.jpg">
+  
+  <!-- Manifest -->
+  <link rel="manifest" href="manifest.json">
   
   <!-- Preload krytycznych zasobów -->
-  <link rel="preload" href="images/test 1_2.jpg" as="image" fetchpriority="high">
+  <link rel="preload" href="images/avatar-optimized.webp" as="image" fetchpriority="high">
+  <link rel="preload" href="images/thumbnail-optimized.webp" as="image" fetchpriority="high">
   <link rel="preload" href="images/test render logo.svg" as="image" fetchpriority="high">
   <link rel="preload" href="style.css?v=1.2" as="style">
   
@@ -16,7 +48,7 @@
   <link rel="stylesheet" href="https://use.typekit.net/tak4ljc.css" media="print" onload="this.media='all'">
   <noscript><link rel="stylesheet" href="https://use.typekit.net/tak4ljc.css"></noscript>
   
-  <link rel="stylesheet" href="style.css?v=1.2">
+  <link rel="stylesheet" href="style.css?v=1.3">
   
   <!-- Preload fallback dla starszych przeglądarek -->
   <script>
@@ -31,6 +63,28 @@
       
       document.body.removeChild(testElement);
     });
+  </script>
+  
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Matt Michałek",
+    "url": "https://piotrstrzelichowskii.github.io/MattMedia/",
+    "image": "https://piotrstrzelichowskii.github.io/MattMedia/images/avatar-optimized.jpg",
+    "description": "Profesjonalne doradztwo w rozwoju firmy i marketingu cyfrowym",
+    "jobTitle": "Business Consultant",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "Matt Media"
+    },
+    "sameAs": [
+      "https://www.youtube.com/@matt_michalek",
+      "https://www.instagram.com/mattmichalek_/"
+    ],
+    "knowsAbout": ["Business Development", "Digital Marketing", "YouTube Marketing", "Social Media"]
+  }
   </script>
 </head>
 <body>
@@ -104,7 +158,8 @@
                      alt="Najnowszy film YouTube" 
                      width="338" height="190"
                      style="width: 100%; max-height: 290px; object-fit: cover; border-radius: 30px;"
-                     loading="lazy">
+                     fetchpriority="high"
+                     loading="eager">
               </picture>
             </a>
           </div>
@@ -119,36 +174,6 @@
   
   <!-- Skrypt JavaScript przeniesiony na koniec -->
   <script>
-    // Konfiguracja YouTube API
-    const YOUTUBE_API_KEY = 'TWÓJ_KLUCZ_API'; // Musisz go pobrać z Google Cloud Console
-    const CHANNEL_ID = 'TWÓJ_CHANNEL_ID'; // ID kanału YouTube
-    
-    async function loadLatestVideo() {
-      try {
-        // Pobierz najnowszy film z kanału
-        const response = await fetch(`https://www.googleapis.com/youtube/v3/search?key=${YOUTUBE_API_KEY}&channelId=${CHANNEL_ID}&part=snippet,id&order=date&maxResults=1&type=video`);
-        const data = await response.json();
-        
-        if (data.items && data.items.length > 0) {
-          const video = data.items[0];
-          const videoId = video.id.videoId;
-          const thumbnail = video.snippet.thumbnails.high.url;
-          const title = video.snippet.title;
-          
-          // Zaktualizuj elementy strony
-          document.getElementById('latest-video-thumbnail').src = thumbnail;
-          document.getElementById('latest-video-title').textContent = title;
-          document.getElementById('latest-video-iframe').src = `https://www.youtube.com/embed/${videoId}`;
-        }
-      } catch (error) {
-        console.error('Błąd podczas ładowania najnowszego filmu:', error);
-        document.getElementById('latest-video-title').textContent = 'Nie udało się załadować najnowszego filmu';
-      }
-    }
-    
-    // Załaduj najnowszy film przy starcie strony
-    loadLatestVideo();
-
     // Animacje wejściowe
     function startAnimations() {
       console.log('Rozpoczynam animacje...');
