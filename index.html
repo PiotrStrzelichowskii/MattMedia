@@ -5,7 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>MATT MEDIA</title>
   <link rel="stylesheet" href="https://use.typekit.net/tak4ljc.css">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css?v=1.1">
+  <script>
+    // Sprawdź czy CSS się załadował
+    window.addEventListener('load', function() {
+      const testElement = document.createElement('div');
+      testElement.className = 'animate-avatar';
+      document.body.appendChild(testElement);
+      
+      const computedStyle = window.getComputedStyle(testElement);
+      console.log('CSS animacji załadowany:', computedStyle.opacity !== '');
+      
+      document.body.removeChild(testElement);
+    });
+  </script>
 </head>
 <body>
   <div class="main-wrapper">
@@ -100,19 +113,31 @@
     // Załaduj najnowszy film przy starcie strony
     loadLatestVideo();
 
-    // Animacje wejściowe
-    document.addEventListener('DOMContentLoaded', function() {
+          // Animacje wejściowe
+    function startAnimations() {
+      console.log('Rozpoczynam animacje...');
+      
+      // Sprawdź czy elementy istnieją
+      const avatar = document.querySelector('.animate-avatar');
+      const logo = document.querySelector('.animate-logo');
+      const socials = document.querySelector('.animate-socials');
+      
+      if (!avatar || !logo || !socials) {
+        console.error('Nie znaleziono elementów do animacji!');
+        return;
+      }
+      
       // Sekwencyjne uruchamianie animacji
       setTimeout(() => {
-        document.querySelector('.animate-avatar').classList.add('animate-in');
+        if (avatar) avatar.classList.add('animate-in');
       }, 200);
 
       setTimeout(() => {
-        document.querySelector('.animate-logo').classList.add('animate-in');
+        if (logo) logo.classList.add('animate-in');
       }, 500);
 
       setTimeout(() => {
-        document.querySelector('.animate-socials').classList.add('animate-in');
+        if (socials) socials.classList.add('animate-in');
         // Dodaj opóźnienie dla każdej ikony social media
         const socialIcons = document.querySelectorAll('.animate-socials .icon-social');
         socialIcons.forEach((icon, index) => {
@@ -177,7 +202,22 @@
           element.classList.add('animate-in');
         }, 1900);
       });
-    });
+    }
+
+    // Uruchom animacje po załadowaniu DOM
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', startAnimations);
+    } else {
+      startAnimations();
+    }
+
+    // Dodatkowe zabezpieczenie - uruchom animacje po 1 sekundzie
+    setTimeout(() => {
+      if (!document.querySelector('.animate-avatar.animate-in')) {
+        console.log('Wymuszam uruchomienie animacji...');
+        startAnimations();
+      }
+    }, 1000);
   </script>
 </body>
 </html>
