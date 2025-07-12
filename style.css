@@ -1,8 +1,14 @@
+html {
+  background: linear-gradient(135deg, #201f1f 0%, #292929 100%);
+  min-height: 100vh;
+}
+
 body {
   margin: 0;
   font-family: 'Fjalla One', Arial, sans-serif;
   background: linear-gradient(135deg, #201f1f 0%, #292929 100%);
   color: #f8f5f1;
+  min-height: 100vh;
 }
 .main-wrapper {
   max-width: 500px;
