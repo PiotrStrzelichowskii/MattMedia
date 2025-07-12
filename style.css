@@ -28,30 +28,6 @@ body {
   }
 }
 
-/* Dodatkowe style dla Safari - bardziej agresywne */
-@media screen and (-webkit-min-device-pixel-ratio: 0) {
-  html, body {
-    background: #201f1f !important;
-    background-image: linear-gradient(135deg, #201f1f 0%, #292929 100%) !important;
-    background-attachment: fixed !important;
-    background-size: 100% 100% !important;
-    background-position: center !important;
-    background-repeat: no-repeat !important;
-    -webkit-background-size: 100% 100% !important;
-  }
-  
-  * {
-    background-color: transparent !important;
-  }
-  
-  .main-wrapper {
-    background: transparent !important;
-  }
-  
-  .main-wrapper::before {
-    display: none !important;
-  }
-}
 .main-wrapper {
   max-width: 500px;
   margin: 0 auto;
