@@ -1,6 +1,7 @@
 html {
   background: linear-gradient(135deg, #201f1f 0%, #292929 100%);
   min-height: 100vh;
+  -webkit-overflow-scrolling: touch;
 }
 
 body {
@@ -9,6 +10,22 @@ body {
   background: linear-gradient(135deg, #201f1f 0%, #292929 100%);
   color: #f8f5f1;
   min-height: 100vh;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Safari-specific fixes */
+@supports (-webkit-touch-callout: none) {
+  html, body {
+    background: linear-gradient(135deg, #201f1f 0%, #292929 100%) fixed;
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  
+  .main-wrapper {
+    background: transparent;
+  }
 }
 .main-wrapper {
   max-width: 500px;
