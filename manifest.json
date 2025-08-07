@@ -1,6 +1,6 @@
 {
-  "name": "Matt Michałek - Ekspert Rozwoju Firm i Marketingu Cyfrowego",
-  "short_name": "Matt Media",
+  "name": "MATT MEDIA - Ekspert Rozwoju Firm i Marketingu Cyfrowego",
+  "short_name": "MATT MEDIA",
   "description": "Profesjonalne doradztwo biznesowe i marketing cyfrowy. Bezpłatne konsultacje, strategie YouTube i budowanie personal brand.",
   "start_url": "/",
   "display": "standalone",
@@ -13,11 +13,6 @@
       "sizes": "any",
       "type": "image/svg+xml",
       "purpose": "any maskable"
-    },
-    {
-      "src": "images/avatar-optimized.jpg",
-      "sizes": "110x196",
-      "type": "image/jpeg"
     }
   ],
   "categories": ["business", "productivity", "education"],
