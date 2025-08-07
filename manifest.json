@@ -1,22 +1,23 @@
 {
-  "name": "MATT MEDIA - Profesjonalne Doradztwo Biznesowe",
+  "name": "Matt Michałek - Ekspert Rozwoju Firm i Marketingu Cyfrowego",
   "short_name": "Matt Media",
-  "description": "Profesjonalne doradztwo w rozwoju firmy. Bezpłatna konsultacja i ekspertyza w marketingu cyfrowym.",
+  "description": "Profesjonalne doradztwo biznesowe i marketing cyfrowy. Bezpłatne konsultacje, strategie YouTube i budowanie personal brand.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#201f1f",
-  "theme_color": "#fe5112",
+  "theme_color": "#201f1f",
   "orientation": "portrait-primary",
   "icons": [
+    {
+      "src": "images/test render logo.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
     {
       "src": "images/avatar-optimized.jpg",
       "sizes": "110x196",
       "type": "image/jpeg"
-    },
-    {
-      "src": "images/test render logo.svg",
-      "sizes": "any",
-      "type": "image/svg+xml"
     }
   ],
   "categories": ["business", "productivity", "education"],
