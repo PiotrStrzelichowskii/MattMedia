@@ -1,6 +1,7 @@
 html {
   background: linear-gradient(135deg, #201f1f 0%, #292929 100%);
   height: 100vh; /* Zmienione z min-height na height */
+  height: 100dvh; /* Nowa jednostka dla mobilnych */
   -webkit-overflow-scrolling: touch;
 }
 
@@ -11,6 +12,7 @@ body {
   background: linear-gradient(135deg, #201f1f 0%, #292929 100%);
   color: #f8f5f1;
   height: 100vh; /* Zmienione z min-height na height */
+  height: 100dvh; /* Nowa jednostka dla mobilnych */
   -webkit-overflow-scrolling: touch;
   overflow-x: hidden; /* Dodane aby uniknąć poziomego przewijania */
 }
